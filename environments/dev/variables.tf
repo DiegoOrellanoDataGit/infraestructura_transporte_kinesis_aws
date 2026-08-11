@@ -26,10 +26,22 @@ variable "s3_bucket_arn" {
 variable "shard_count" {
   type = number
   description = "conteo del shard"
-default = 1
+default = 2
 }
 variable "kms_key_id" {
   type = string
   description = "llave identificadora unica de kms"
  default     = "alias/aws/kinesis" 
  }
+ 
+variable "buffering_size" {
+  type = number
+  description = "Tamaño del buffer medido en MB antes de entregar a S3"
+  default = 5
+}
+
+variable "buffering_interval" {
+  type = number
+  description = "Intervalo de tiempo medido en segundos para entrega datos a S3"
+  default = 60
+}
