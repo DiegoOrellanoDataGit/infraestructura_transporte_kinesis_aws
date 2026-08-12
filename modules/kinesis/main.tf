@@ -1,5 +1,5 @@
 resource "aws_kinesis_stream" "kinesis_stream" {
-    name = "${var.nombre_proyecto}-${var.environment}-event-steam"
+    name = "${var.nombre_proyecto}-${var.environment}-event-stream"
     shard_count = var.shard_count
 
     stream_mode_details {
@@ -7,7 +7,8 @@ resource "aws_kinesis_stream" "kinesis_stream" {
     }
 
     encryption_type = "KMS"
-    kms_key_id = var.kms_key_id
+    kms_key_id = "alias/aws/kinesis"  #en una primera version intente parametrizarla pero daba error
+
 
     tags = {
       Environment = var.environment
