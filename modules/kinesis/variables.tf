@@ -11,10 +11,9 @@ variable "nombre_proyecto" {
 variable "shard_count" {
   type = number
   description = "conteo del shard"
-
+default = 2
 }
 variable "kms_key_id" {
   type = string
   description = "llave identificadora unica de kms"
-  
 }
