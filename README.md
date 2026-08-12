@@ -13,8 +13,7 @@ flowchart TD
     B --> C[Kinesis Firehose]
     C --> D[S3 Bucket Data Lake]
     B --> E[CloudWatch Logs]
-📂 Estructura del proyecto
-Código
+
 ├── modules/
 │   ├── kinesis/
 │   ├── firehose/
@@ -32,29 +31,3 @@ Código
 ├── policies/
 │   └── firehose.json
 └── README.md
-⚙️ Pasos de despliegue
-Inicializar Terraform:
-
-terraform init
-terraform plan
-terraform apply
-
-✅ Validación funcional
-Enviar un evento de prueba:
-
-aws kinesis put-record \
-  --stream-name infraestructura-transporte-kinesis-aws-dev-event-stream \
-  --partition-key testKey \
-  --data "Hello World"
-Verificar que el archivo se almacene en el bucket S3.
-
-Revisar logs en CloudWatch para confirmar la entrega.
-
-💡 Optimización de costos
-Usar 2 shard en dev para pruebas.
-
-Usar compresión GZIP en Firehose.
-
-Configurar buffering de 5 MB / 60s.
-
-Escalar shard_count en prod según la carga real.
